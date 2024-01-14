@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}{{user.username}}{% endblock %}
+
+{% block content %}
+<h1>
+    Profile
+    {% if current_user.username == user.username %}
+    <span style="font-size: smaller;"><a href="{{ url_for('user.settings') }}">Edit</a></span>
+    {% endif %}
+</h1>
+
+<h2>{{user.username}}</h2>
+<p>{{user.city}}</p>
+{% endblock %}

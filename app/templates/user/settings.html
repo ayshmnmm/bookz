@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+<h1>Settings</h1>
+<form action="" method="post">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" value="{{ current_user.username }}">
+    <label for="city">City</label>
+    <input type="text" name="city" id="city" value="{{ current_user.city }}">
+    <input type="submit" value="Save">
+</form>
+{% endblock %}
