@@ -15,7 +15,7 @@ def login(username, password):
     flash('Logged in successfully', 'success')
     return True
     
-def register(username, password, password2, city):
+def register(username, password, password2, city,email):
     user = User.get_user_by_username(username)
     if user is not None:
         flash('Username already exists', 'error')
@@ -37,8 +37,8 @@ def register(username, password, password2, city):
         return False
     
     password_hash = generate_password_hash(password)
-    User.register_user(username, password_hash, city)
-    login_user(User.get_user_by_username(username))
+    User.register_user(username, password_hash, city,email)
+   # login_user(User.get_user_by_username(username))
     flash('Registered successfully', 'success')
     return True
 

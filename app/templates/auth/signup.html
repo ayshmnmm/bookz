@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Login{% endblock %}
+{% block title %} Signup {% endblock %}
 
 {% block content %}
 <div class="hero min-h-screen bg-base-200">
@@ -13,7 +13,7 @@
         <form class="card-body" method="POST">
           <div class="form-control">
             <label class="label">
-              <span class="label-text">Username</span>
+              <span class="label-text">username</span>
             </label>
             <input type="text" placeholder="username" name="username" class="input input-bordered" required />
           </div>
@@ -23,8 +23,26 @@
             </label>
             <input type="password" placeholder="password" name="password" class="input input-bordered" required />
           </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Password</span>
+            </label>
+            <input type="password" placeholder="password" name="password2" class="input input-bordered" required />
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Email</span>
+            </label>
+            <input type="email" placeholder="email" name="email" class="input input-bordered" required />
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">City</span>
+            </label>
+            <input type="text" placeholder="City" name="city" class="input input-bordered" required />
+          </div>
           <div class="form-control mt-6">
-            <button class="btn btn-primary" href="url_for('auth.login')">Login</button>
+            <button class="btn btn-primary" href="url_for('auth.signup')">Sign-up</button>
           </div>
         </form>
       </div>

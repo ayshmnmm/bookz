@@ -15,9 +15,9 @@ class User(UserMixin):
         result = cursor.fetchone()
         return User(*result) if result else None
     
-    def register_user(username, password_hash, city):
-        query = "INSERT INTO users (username, password, city) VALUES (%s, %s, %s)"
-        cursor.execute(query, (username, password_hash, city))
+    def register_user(username, password_hash, city,email):
+        query = "INSERT INTO users (username,pwd,city,email) VALUES (%s, %s, %s,%s)"
+        cursor.execute(query, (username, password_hash, city,email))
         db.commit()
 
     def get_user_by_username(username):
@@ -25,6 +25,7 @@ class User(UserMixin):
         cursor.execute(query, (username,))
         result = cursor.fetchone()
         return User(*result) if result else None
+
     
     def update_user(current_username, username, city):
         query = "UPDATE users SET username = %s, city = %s WHERE username = %s"
