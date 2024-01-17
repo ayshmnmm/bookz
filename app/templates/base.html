@@ -13,7 +13,10 @@
     <div class="navbar bg-base-100">
         <div class="navbar-start">
 
-            <a class="btn btn-ghost text-xl text-accent" href="{{url_for('auth.login')}}">Bookz</a>
+            <a class="btn btn-ghost text-xl" href="{{url_for('main.index')}}">
+                <img src="{{url_for('static', filename='img/logo.jpg')}}" alt="logo" class="w-10 h-10">
+                <span>Book Mart</span>
+            </a>
         </div>
         <div class="navbar-end">
             {% if current_user.is_authenticated %}
