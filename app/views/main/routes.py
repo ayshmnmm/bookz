@@ -8,7 +8,6 @@ def index():
         return render_template('home/logged_in_index.html')
     else:
         return render_template('home/index.html')
-
 @bp.route('/about')
 def about():
     return render_template('home/about.html')
