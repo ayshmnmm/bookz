@@ -6,3 +6,9 @@ CREATE TABLE IF NOT EXISTS users (
   email varchar(30) NOT NULL,
   created_at timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+CREATE TABLE IF NOT EXISTS book(
+  book_id VARCHAR(255) PRIMARY key,
+  book_name VARCHAR(255) NOT NULL,
+  author_name VARCHAR(255) NOT NULL,
+  image_url VARCHAR(255) NOT NULL
+);
