@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Info{% endblock %}
+
+{% block content %}
+<div class="card-body">
+    <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/4 mb-6 mx-auto md:mx-0">
+            <img src="{{ det['image_url'] }}" alt="{{ det['title'] }}" class="rounded-lg shadow-lg lg:mx-auto" />
+        </div>
+        <div class="md:w-2/3 md:pl-6 text-center md:text-left">
+            <h1 class="text-3xl font-bold mb-2">{{ det['title'] }}</h1>
+            <p class="text-base text-gray-600">Author: {{ det['authors'][0] }}</p>
+            <p class="text-base text-gray-600">Published Date: {{ det['publishedDate'] }}</p>
+            <p class="text-base text-gray-600">Publisher: {{ det['publisher'] }}</p>
+            <p class="text-base text-gray-600">Pages: {{ det['page'] }} pages</p>
+            <p class="text-base text-gray-600">Description</p>
+            <p class="pt-6 text-lg font-semibold text-left">{{ det['desc']|safe }}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

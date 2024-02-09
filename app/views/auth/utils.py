@@ -1,4 +1,4 @@
-from flask_login import current_user, login_user, logout_user,current_user
+from flask_login import current_user, login_user, logout_user
 from flask import flash
 from app.models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash

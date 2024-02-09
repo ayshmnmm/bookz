@@ -26,7 +26,6 @@ class User(UserMixin):
         result = cursor.fetchone()
         return User(*result) if result else None
 
-    
     def update_user(current_username, username, city):
         query = "UPDATE users SET username = %s, city = %s WHERE username = %s"
         cursor.execute(query, (username, city, current_username))

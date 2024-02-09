@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="hero min-h-screen bg-base-200">
+    <div class="hero-content flex-col lg:flex-row">
+      <img src="{{url_for('static',filename='img/happy.jpg')}}" class="max-w-sm rounded-lg shadow-2xl" />
+      <div>
+        <h1 class="text-5xl font-bold">Welcome Back {{current_user.username}}!</h1>
+        <p class="py-6">Quote.</p>
+      </div>
+    </div>
+  </div>
+  <div class="min-h-screen">
+    <h1 class="text-5xl font-bold">Search for a book</h1>
+    <form class="card-body" method="POST" action="{{url_for('book.search_book')}}">
+      <input type="text" name="book_name" placeholder="search book">
+      <button class="btn btn-primary" href="url_for('book.search_book')">Search</button>
+    </form>
+    <div>
+      {% if books %}
+      Recent books
+      {% for book in books %}
+      <h1>{{ book[1]}}</h1>
+      {% endfor%}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

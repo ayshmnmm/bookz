@@ -15,9 +15,7 @@ def login():
         if utils.login(username, password):
             return redirect(url_for('main.index'))
     return render_template('auth/login.html')
-@bp.route('/show')
-def show():
-    return render_template('home/logged_in.html')
+
 @bp.route('/logout')
 def logout():
     utils.logout()
