@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/harish/Documents/Book Mart/env/bin/python" "$0" "$@"
+'''exec' "/home/harish/Documents/Book Mart/env/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re

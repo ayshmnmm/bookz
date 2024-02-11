@@ -3,7 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="hero min-h-screen bg-base-200">
+<div class="hero min-h-screen bg-base-200 bg-emerald-100">
     <div class="hero-content flex-col lg:flex-row">
       <img src="{{url_for('static',filename='img/happy.jpg')}}" class="max-w-sm rounded-lg shadow-2xl" />
       <div>
@@ -12,19 +12,34 @@
       </div>
     </div>
   </div>
-  <div class="min-h-screen">
-    <h1 class="text-5xl font-bold">Search for a book</h1>
+  <div class="min-h-screen bg-teal-100">
+    <h1 class="text-5xl font-bold  font-semibold">Search for a Book</h1>
     <form class="card-body" method="POST" action="{{url_for('book.search_book')}}">
-      <input type="text" name="book_name" placeholder="search book">
-      <button class="btn btn-primary" href="url_for('book.search_book')">Search</button>
+      <input type="text" name="book_name" placeholder="search book" class="w-50 h-10">
+      <button class="btn btn-primary w-50 h-10" href="url_for('book.search_book')">Search</button>
     </form>
-    <div>
-      {% if books %}
-      Recent books
-      {% for book in books %}
-      <h1>{{ book[1]}}</h1>
-      {% endfor%}
-      {% endif %}
-    </div>
+      <div class="hero min-h-screen relative">
+        {% if books %}
+        <div class="overflow-x-auto absolute top-0 left-1 mx-2 my-4">
+            <h1 class="font-bold">Newely added Books</h1>
+            <div class="flex">
+                {% for det in books[:15] %}
+                {% if current_user.username!=det[1] %}
+                    <div class="card card-side bg-base-100 p-6 max-w-md mr-4 border-double border-4 border-indigo-600">
+                        <img src="{{ det[6] }}" alt="book cover" class="rounded-md max-h-36 shadow-sm" />
+                        <div class="card-body py-0 pr-0">
+                            <h2 class="card-title">{% if det[0] %}{{ det[4] }}{% else %}Unknown{% endif %}</h2>
+                            <p class="text-sm text-base-content">{% if det[5] %}{{ det[5] }}{% else %}Unknown Author{% endif %}</p>
+                            <div class="card-actions justify-end">
+                              <a class="btn btn-outline" href="#">Trade with {{det[1]}}</a>
+                              <a class="btn btn-outline" href="{{ url_for('book.book_info', book_id=det[3]) }}">Info</a>
+                          </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
   </div>
 {% endblock %}

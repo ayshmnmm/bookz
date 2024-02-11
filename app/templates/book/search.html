@@ -3,21 +3,20 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="hero min-h-screen relative">
+<div class="hero min-h-screen relative bg-emerald-100">
   <h1 class="font-bold bend text-white absolute top-0 left-0 m-3 p-2">Your Results</h1>
 
   {% if detail %}
-      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-x-6 gap-y-10 mx-auto my-4">
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-x-6 gap-y-8 mx-auto my-4">
           {% for det in detail[:15] %}
-              <div class="card card-side bg-base-100 p-6 max-w-md">
+              <div class="card card-side bg-base-100 p-6 max-w-md border-4 border-double border-red-500">
                   <img src="{{ det['image_url'] }}" alt="book cover" class="rounded-md max-h-36 shadow-sm" />
                   <div class="card-body py-0 pr-0">
-                      <h2 class="card-title">{% if det['title'] %}{{ det['title'][:40] }}{% else %}Unknown{% endif %}</h2>
+                      <h2 class="card-title">{% if det['title'] %}{{ det['title']}}{% else %}Unknown{% endif %}</h2>
                       <p class="text-sm text-base-content">{% if det['authors'] %}{{ det['authors'][0] }}{% else %}Unknown Author{% endif %}</p>
                       <div class="card-actions justify-end">
-                          <a class="btn btn-outline" href="#">Add to library</a>
+                          <a class="btn btn-outline" href="{{url_for('book.add_book', book_id=det['id'])}}">Add to library</a>
                           <a class="btn btn-outline" href="{{ url_for('book.book_info', book_id=det['id']) }}">Info</a>
-
                       </div>
                   </div>
               </div>

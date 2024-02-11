@@ -30,4 +30,3 @@ class User(UserMixin):
         query = "UPDATE users SET username = %s, city = %s WHERE username = %s"
         cursor.execute(query, (username, city, current_username))
         db.commit()
-    

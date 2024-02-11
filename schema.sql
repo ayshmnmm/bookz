@@ -12,3 +12,16 @@ CREATE TABLE IF NOT EXISTS book(
   author_name VARCHAR(255) NOT NULL,
   image_url VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS library(
+  user_id SERIAL,
+  book_id VARCHAR(255)
+);
+ALTER TABLE book
+ALTER COLUMN author_name TYPE varchar(500);
+
+ALTER TABLE book
+ALTER COLUMN book_name TYPE varchar(500);
+
+ALTER TABLE book
+ALTER COLUMN image_url TYPE varchar(500);
