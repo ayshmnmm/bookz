@@ -19,9 +19,9 @@
         </div>
         <div class="navbar-end p-1">
             {% if current_user.is_authenticated %}
-            <div class="form-control p-1">
-                <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
-              </div>
+            <form action="{{url_for('main.index')}}" method="POST">
+                <input type="text" placeholder="Search" name="search" class="input input-bordered w-24 md:w-auto"  />
+            </form>
             <div class="dropdown dropdown-end">
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                   <div class="w-10 rounded-full">
@@ -30,18 +30,17 @@
                 </div>
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                   <li>
-                    <a class="justify-between">
+                    <a class="justify-between" href="{{url_for('user.profile',username=current_user.username)}}">
                       Profile
-                      <span class="badge">New</span>
                     </a>
-                  </li>
-                  <li><a>Settings</a></li>
+                  <li><a class="justify-between" href="{{ url_for('user.library') }}">Your Library</a></li>
+                  <li><a>Trade Requests</a></li>
                   <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
                 </ul>
               </div>
             {% else %}
-            <a class="btn" href="{{url_for('auth.login')}}">Login</a>
-            <a class="btn" href="{{url_for('auth.signup')}}">Signup</a>
+            <a class="btn p-2 m-2" href="{{url_for('auth.login')}}">Login</a>
+            <a class="btn p-2 m-2" href="{{url_for('auth.signup')}}">Signup</a>
             {% endif %}
         </div>
     </div>

@@ -24,9 +24,10 @@ def create_app():
     from app.views.auth import bp as auth_bp
     from app.views.user import bp as user_bp
     from app.views.book import bp as book_bp
+    from app.views.trades import bp as trade_bp
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp)
     app.register_blueprint(user_bp)
     app.register_blueprint(book_bp, url_prefix='/book')
-
+    app.register_blueprint(trade_bp, url_prefix='/trade')
     return app

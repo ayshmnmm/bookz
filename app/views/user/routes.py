@@ -8,7 +8,8 @@ from flask_login import current_user, login_required
 def profile(username):
     user = utils.get_user(username)
     if user:
-        return render_template('user/profile.html', user=user)
+        books = utils.library()
+        return render_template('user/profile.html', books=books,user=user)
     else:
         flash('User not found')
         return render_template('404.html'), 404
@@ -22,3 +23,14 @@ def settings():
         if utils.update_user(username, city):
             return redirect(url_for('user.profile', username=username))
     return render_template('user/settings.html')
+
+@bp.route('/lib/<use>')
+@login_required
+def user_library(use):
+    books = utils.library(use)
+    return render_template('user/library.html', books=books)
+
+@bp.route('/library')
+def library():
+    books = utils.library()
+    return render_template('user/library.html', books=books)

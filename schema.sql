@@ -1,3 +1,4 @@
+
 CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
   username varchar(20) NOT NULL UNIQUE,
@@ -7,21 +8,23 @@ CREATE TABLE IF NOT EXISTS users (
   created_at timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 CREATE TABLE IF NOT EXISTS book(
-  book_id VARCHAR(255) PRIMARY key,
-  book_name VARCHAR(255) NOT NULL,
-  author_name VARCHAR(255) NOT NULL,
-  image_url VARCHAR(255) NOT NULL
+  book_id VARCHAR(500) PRIMARY key,
+  book_name VARCHAR(500) NOT NULL,
+  author_name VARCHAR(500) NOT NULL,
+  image_url VARCHAR(500) NOT NULL
 );
-
 CREATE TABLE IF NOT EXISTS library(
   user_id SERIAL,
-  book_id VARCHAR(255)
+  book_id VARCHAR(500)
 );
-ALTER TABLE book
-ALTER COLUMN author_name TYPE varchar(500);
-
-ALTER TABLE book
-ALTER COLUMN book_name TYPE varchar(500);
-
-ALTER TABLE book
-ALTER COLUMN image_url TYPE varchar(500);
+CREATE TABLE IF NOT EXISTS requests(
+  id SERIAL PRIMARY KEY,
+  requester_id SERIAL REFERENCES users(id),
+  requested_id SERIAL REFERENCES users(id),
+  book_id1 VARCHAR(500) REFERENCES book(book_id) NOT NULL,
+  book_id2 VARCHAR(500) REFERENCES book(book_id)
+);
+CREATE TABLE IF NOT EXISTS trade_status(
+  id SERIAL REFERENCES requests(id),
+  stat VARCHAR(20) NOT NULL
+);
