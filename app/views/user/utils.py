@@ -1,6 +1,7 @@
 from app.models.user import User
 from flask_login import current_user
 from flask import flash
+from app.models.book import Book
 
 def get_user(username):
     return User.get_user_by_username(username)
@@ -24,3 +25,10 @@ def update_user(username, city):
     current_user.city = city
     flash('Updated successfully', 'success')
     return True
+def library(user=None):
+    if user:
+        books = Book.library_books(user)
+    else:
+        books = Book.library_books(current_user.id)
+    return books
+    

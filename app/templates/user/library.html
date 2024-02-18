@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}{{Library}}{% endblock %}
+
+{% block content %}
+<div class="hero min-h-screen relative">
+    {% if books %}
+      <div class="left-5 absolute top-5">
+        <h1 class="font-bold text-5xl top-50 left-2">Your Books</h1>
+        <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-x-6 gap-y-8 mx-auto my-4">
+          {% for det in books%}
+              <div class="card card-side bg-base-100 p-6 max-w-md border-4">
+                <img src="{{ det[3] }}" alt="book cover" class="rounded-md max-h-36 shadow-sm" />
+                <div class="card-body py-0 pr-0">
+                  <h2 class="card-title">{% if det[1] %}{{ det[1] }}{% else %}Unknown{% endif %}</h2>
+                  <p class="text-sm text-base-content">{% if det[2] %}{{ det[2] }}{% else %}Unknown Author{% endif %}</p>
+                  <div class="card-actions justify-end">
+                    <a class="btn btn-outline" href="{{ url_for('book.book_info', book_id=det[0]) }}">Info</a>
+                  </div>
+                </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% else %}
+        <h1 class="font-bold top-50 left-2">No Books in your Library</h1>
+    {% endif %}
+  </div>
+{% endblock %}

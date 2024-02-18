@@ -3,12 +3,20 @@
 {% block title %}Settings{% endblock %}
 
 {% block content %}
-<h1>Settings</h1>
-<form action="" method="post">
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username" value="{{ current_user.username }}">
-    <label for="city">City</label>
-    <input type="text" name="city" id="city" value="{{ current_user.city }}">
-    <input type="submit" value="Save">
-</form>
+<div class="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+    <h1 class="text-3xl font-bold mb-4">Settings</h1>
+    <form action="" method="post" class="space-y-4">
+        <div>
+            <label for="username" class="block text-sm font-medium text-gray-600">Username</label>
+            <input type="text" name="username" id="username" value="{{ current_user.username }}" class="mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300">
+        </div>
+        <div>
+            <label for="city" class="block text-sm font-medium text-gray-600">City</label>
+            <input type="text" name="city" id="city" value="{{ current_user.city }}" class="mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300">
+        </div>
+        <div>
+            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105">Save</button>
+        </div>
+    </form>
+</div>
 {% endblock %}
