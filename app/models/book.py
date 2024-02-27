@@ -50,3 +50,7 @@ class Book:
         if not b:
             cursor.execute("INSERT INTO library VALUES(%s,%s)",(user_id,book_id))
             db.commit()
+    def get_by_name(book_name):
+        cursor.execute("SELECT book_id FROM book WHERE book_name=%s",(book_name,))
+        book=cursor.fetchone()
+        return book

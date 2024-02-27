@@ -15,6 +15,7 @@
                   <h2 class="card-title">{% if det[1] %}{{ det[1] }}{% else %}Unknown{% endif %}</h2>
                   <p class="text-sm text-base-content">{% if det[2] %}{{ det[2] }}{% else %}Unknown Author{% endif %}</p>
                   <div class="card-actions justify-end">
+                    <a class="btn btn-outline" href="{{url_for('trade.send_request',to=det[0],book_id=det[3])}}">Trade <a>
                     <a class="btn btn-outline" href="{{ url_for('book.book_info', book_id=det[0]) }}">Info</a>
                   </div>
                 </div>
@@ -23,7 +24,7 @@
         </div>
       </div>
       {% else %}
-        <h1 class="font-bold top-50 left-2">No Books in your Library</h1>
+        <h1 class="font-bold top-50 left-2">No Books in  Library</h1>
     {% endif %}
   </div>
 {% endblock %}

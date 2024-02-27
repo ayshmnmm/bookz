@@ -42,7 +42,7 @@
                   <p class="text-sm text-base-content">{% if det[5] %}{{ det[5]}}{% else %}Unknown Author{% endif %}</p>
                   <div class="card-actions justify-end">
                       <a class="btn btn-outline" href="{{url_for('trade.send_request',to=det[0],book_id=det[3])}}">Trade with {{det[1]}}</a>
-                      <a class="btn btn-outline" href="{{ url_for('book.book_info', book_id=det['id']) }}">Info</a>
+                      <a class="btn btn-outline" href="{{ url_for('book.book_info', book_id=det[3]) }}">Info</a>
                   </div>
               </div>
           </div>

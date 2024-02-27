@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Trade{% endblock %}
+
+{% block content %}
+  {% if trades %}
+    <table style="border: 2px solid white;">
+      <tr>
+        <th>FROM</th>
+        <th>REQUESTED BOOK</th>
+        <th>SELECTED BOOK</th>
+        <th>CONFIRM</th>
+      </tr>
+      {% for trade in trades %}
+        <form method="POST" action="{{ url_for('trade.confirm_trade', book2_name=trade[2], requester_name=trade[1])}}">
+          <tr>
+            <td >{{ trade[1].capitalize() }}</td>
+            <td >{{ trade[2] }}</td>
+            <td>
+              <select name="selectedBook" id="selectedBook">
+                {% for book in trade[4] %}
+                  <option>{{ book[0] }}</option>
+                {% endfor %}
+              </select>
+            </td>
+            <td>
+                {% if trade[3]=="Pending" %}
+                  <button type="submit" class="btn btn-primary h-12 bg-blue-500">Confirm</button>
+                {% else %}
+                    <button class="btn btn-primary h-12 bg-blue-500" disabled>Confirmed</button>
+                {% endif %}
+            </td>
+          </tr>
+        </form>
+      {% endfor %}
+    </table>
+  {% else %}
+    No Trades Yet
+  {% endif %}
+{% endblock %}

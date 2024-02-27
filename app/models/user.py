@@ -1,4 +1,4 @@
-from app.models import db, cursor
+from app.models import db,cursor
 from flask_login import UserMixin
 
 
